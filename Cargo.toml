@@ -7,7 +7,7 @@ homepage = "https://github.com/jeandudey/ip-combinator-rs"
 license = "MIT"
 readme = "README.md"
 description = "Parser combinator for ipv4"
-documentation = "https://github.com/killercup/ip-combinator-rs"
+documentation = "https://github.com/jeandudey/ip-combinator-rs"
 
 [dependencies]
 nom = "1.2.2"
