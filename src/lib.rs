@@ -26,6 +26,7 @@ extern crate nom;
 
 use nom::is_digit;
 use std::str::FromStr;
+use std::net::Ipv4Addr;
 
 named!(dot, tag!("."));
 
@@ -45,14 +46,14 @@ named!(d8<u8>, map!(take_while!(is_digit), |digits: &[u8]| -> u8 {
     }
 }));
 
-named!(pub ipv4_address<&[u8], (u8, u8, u8, u8)>, chain!(a: d8 ~
+named!(pub ipv4_address<&[u8], Ipv4Addr>, chain!(a: d8 ~
                                                          dot   ~
                                                          b: d8 ~
                                                          dot   ~
                                                          c: d8 ~
                                                          dot   ~
                                                          d: d8,
-                                                         || { (a, b, c, d) }));
+                                                         || { Ipv4Addr::new(a, b, c, d) }));
 
 #[cfg(test)]
 mod test {
@@ -60,9 +61,10 @@ mod test {
     fn check_ipv4_address() {
         use super::ipv4_address;
         use super::nom::IResult;
+        use std::net::Ipv4Addr;
 
         let to_parse = b"192.168.1.1";
-        let exp_out = (192, 168, 1, 1);
+        let exp_out = Ipv4Addr::new(192, 168, 1, 1);
         let exp_in = b"";
 
         match ipv4_address(to_parse) {
