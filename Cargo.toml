@@ -6,7 +6,7 @@ repository = "https://github.com/jeandudey/ip-combinator-rs"
 homepage = "https://github.com/killercup/ip-combinator-rs"
 license = "MIT"
 readme = "README.md"
-description = "Parser combinator for ipv4 and ipv6"
+description = "Parser combinator for ipv4"
 documentation = "https://github.com/killercup/ip-combinator-rs"
 
 [dependencies]

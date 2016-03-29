@@ -1,6 +1,5 @@
 # ip-combinator-rs
-This crate implements parser combinators for ipv4 and ipv6 (still working on the
-last one).
+This crate implements a parser combinator for ipv4.
 
 ## License
 ```
