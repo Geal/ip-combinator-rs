@@ -10,4 +10,4 @@ description = "Parser combinator for ipv4"
 documentation = "https://github.com/jeandudey/ip-combinator-rs"
 
 [dependencies]
-nom = "1.2.2"
+nom = "^2.0"
