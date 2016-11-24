@@ -46,14 +46,14 @@ named!(d8<u8>, map!(take_while!(is_digit), |digits: &[u8]| -> u8 {
     }
 }));
 
-named!(pub ipv4_address<&[u8], Ipv4Addr>, chain!(a: d8 ~
-                                                         dot   ~
-                                                         b: d8 ~
-                                                         dot   ~
-                                                         c: d8 ~
-                                                         dot   ~
-                                                         d: d8,
-                                                         || { Ipv4Addr::new(a, b, c, d) }));
+named!(pub ipv4_address<&[u8], Ipv4Addr>, do_parse!(a: d8
+                                                 >>    dot
+                                                 >> b: d8
+                                                 >>    dot
+                                                 >> c: d8
+                                                 >>    dot
+                                                 >> d: d8
+                                                 >> (Ipv4Addr::new(a, b, c, d) )));
 
 #[cfg(test)]
 mod test {
